@@ -2,12 +2,14 @@ const mongoose = require('mongoose');
 const Student = require('../models/studentModel');
 
 mongoose.connect(
-    'mongodb+srv://neoland:<PASSWORD>@maintestcluster.srioy.azure.mongodb.net/school?retryWrites=true&w=majority',
+    `mongodb+srv://neoland:${process.env.MATLASPASS}@maintestcluster.srioy.azure.mongodb.net/school?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
 module.exports = {
     getStudents: async function(req, res) {
+        console.log('Valor de MATLASPASS', process.env.MATLASPASS);
+
         const studentList = await Student.find();
         console.log('RESPUESTA de la BBDD', studentList);
 

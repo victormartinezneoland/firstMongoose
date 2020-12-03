@@ -10,6 +10,8 @@
 // npm i NOMBREDELPAQUETE --dev
 // npm i nodemon --dev
 
+// Configuro el DotEnv
+require('dotenv').config();
 
 // import express from 'express';
 const express = require('express');
@@ -29,4 +31,4 @@ app.get('/', (req, res) => {
     res.status(200).send('<h2>Llama a la ruta específica</h2>');
 });
 
-app.listen(3001, () => console.log('Aplicación rulando en el puerto 3001'));
+app.listen(process.env.PORT, () => console.log('Aplicación rulando en el puerto 3001'));
